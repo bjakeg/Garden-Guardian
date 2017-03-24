@@ -197,7 +197,6 @@ displayCountingLabel:(BOOL)displayCountingLabel
 }
 
 -(void)updateChartByCurrent:(NSNumber *)current byTotal:(NSNumber *)total {
-    double totalPercentageValue = [current floatValue]/([total floatValue]/100.0);
     
     if (_strokeColorGradientStart) {
         self.gradientMask.strokeEnd = _circle.strokeEnd;
@@ -230,7 +229,6 @@ displayCountingLabel:(BOOL)displayCountingLabel
 
 - (void)addAnimationIfNeeded
 {
-    double percentageValue = [_current floatValue]/([_total floatValue]/100.0);
     
     if (self.displayAnimated) {
         CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];

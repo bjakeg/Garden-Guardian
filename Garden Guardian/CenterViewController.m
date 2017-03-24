@@ -1,12 +1,15 @@
 #import "CenterViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
+#import "BTConnectionHandler.h"
 
 @interface CenterViewController ()
 
 @end
 
-@implementation CenterViewController
+@implementation CenterViewController {
+    BTConnectionHandler *_handler;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,6 +24,9 @@
                           blue:250.0/255.0
                           alpha:1.0];
     [self.navigationController.navigationBar setBarTintColor:barColor];
+    
+    BTConnectionHandler *BTHandler = [[BTConnectionHandler alloc] init];
+    _handler = BTHandler;
 
 }
 

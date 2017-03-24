@@ -12,6 +12,7 @@
 #import "PNScatterChartData.h"
 #import "PNScatterChartDataItem.h"
 #import "PNLineChart.h"
+#import "ACMagnifyingGlass.h"
 
 @interface PNScatterChart ()
 
@@ -50,7 +51,10 @@
 @end
 
 
-@implementation PNScatterChart
+@implementation PNScatterChart {
+    ACMagnifyingGlass *magnifyingGlass;
+    UIImageView *glass;
+}
 
 #pragma mark initialization
 
@@ -516,6 +520,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:self];
     
+    
     CGFloat minDist = 100.f;
     NSInteger minIndex = -1;
     
@@ -541,12 +546,37 @@
             CGFloat xFinilizeValue = [self mappingIsForAxisX:true WithValue:xValue];
             CGFloat yFinilizeValue = [self mappingIsForAxisX:false WithValue:yValue];
             
-            [_delegate userClickOnValue:CGPointMake(xValue, yValue) atPoint:CGPointMake(xFinilizeValue, yFinilizeValue)];
+            [_delegate userClickOnValue:CGPointMake(xValue, yValue)
+                                atPoint:CGPointMake(xFinilizeValue, yFinilizeValue)
+                             touchPoint:touchPoint];
         }
     }
-    
-    
-
 }
+
+- (void)addMagnifyingGlassAtPoint:(CGPoint)point {
+    
+    if (!magnifyingGlass) {
+        magnifyingGlass = [[ACMagnifyingGlass alloc] init];
+    }
+    
+    if (!magnifyingGlass.viewToMagnify) {
+        magnifyingGlass.viewToMagnify = self;
+        
+    }
+    
+    magnifyingGlass.touchPoint = point;
+    [self.superview addSubview:magnifyingGlass];
+    [magnifyingGlass setNeedsDisplay];
+}
+
+- (void)removeMagnifyingGlass {
+    [magnifyingGlass removeFromSuperview];
+}
+
+- (void)updateMagnifyingGlassAtPoint:(CGPoint)point {
+    magnifyingGlass.touchPoint = point;
+    [magnifyingGlass setNeedsDisplay];
+}
+
 
 @end

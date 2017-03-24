@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8AA8EF31E8301BA00279560 /* BTConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */; };
 		D8BD70C31E7F21E300D40E83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD70C21E7F21E300D40E83 /* main.m */; };
 		D8BD70C61E7F21E300D40E83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD70C51E7F21E300D40E83 /* AppDelegate.m */; };
 		D8BD70CE1E7F21E300D40E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BD70CD1E7F21E300D40E83 /* Assets.xcassets */; };
@@ -83,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D8AA8EF11E8301BA00279560 /* BTConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTConnectionHandler.h; sourceTree = "<group>"; };
+		D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTConnectionHandler.m; sourceTree = "<group>"; };
 		D8BD70BE1E7F21E300D40E83 /* Garden Guardian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Garden Guardian.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BD70C21E7F21E300D40E83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8BD70C41E7F21E300D40E83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +215,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D8AA8EF01E83019A00279560 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D8AA8EF11E8301BA00279560 /* BTConnectionHandler.h */,
+				D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		D8BD70B51E7F21E300D40E83 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +247,7 @@
 		D8BD70C01E7F21E300D40E83 /* Garden Guardian */ = {
 			isa = PBXGroup;
 			children = (
+				D8AA8EF01E83019A00279560 /* Data */,
 				D8BD71691E7F246500D40E83 /* Supporting Files */,
 				D8BD715E1E7F23ED00D40E83 /* Third Party */,
 				D8BD711D1E7F236D00D40E83 /* ViewControllers */,
@@ -319,14 +332,14 @@
 		D8BD711E1E7F237D00D40E83 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				D8BD71281E7F23B300D40E83 /* PHHistoryViewController.h */,
-				D8BD71291E7F23B300D40E83 /* PHHistoryViewController.m */,
-				D8BD71251E7F23A300D40E83 /* WaterHistoryViewController.h */,
-				D8BD71261E7F23A300D40E83 /* WaterHistoryViewController.m */,
 				D8BD711F1E7F238800D40E83 /* SunHistoryViewController.h */,
 				D8BD71201E7F238800D40E83 /* SunHistoryViewController.m */,
+				D8BD71251E7F23A300D40E83 /* WaterHistoryViewController.h */,
+				D8BD71261E7F23A300D40E83 /* WaterHistoryViewController.m */,
 				D8BD71221E7F239A00D40E83 /* TempHistoryViewController.h */,
 				D8BD71231E7F239A00D40E83 /* TempHistoryViewController.m */,
+				D8BD71281E7F23B300D40E83 /* PHHistoryViewController.h */,
+				D8BD71291E7F23B300D40E83 /* PHHistoryViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -568,6 +581,7 @@
 				D8BD715B1E7F23D700D40E83 /* PNScatterChart.m in Sources */,
 				D8BD71591E7F23D700D40E83 /* PNRadarChart.m in Sources */,
 				D8BD71671E7F240D00D40E83 /* ACMagnifyingGlass.m in Sources */,
+				D8AA8EF31E8301BA00279560 /* BTConnectionHandler.m in Sources */,
 				D8BD714F1E7F23D700D40E83 /* PNBarChart.m in Sources */,
 				D8BD71071E7F22D300D40E83 /* LeftViewController.m in Sources */,
 				D8BD712A1E7F23B300D40E83 /* PHHistoryViewController.m in Sources */,
@@ -741,6 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 95SDNK48A5;
 				INFOPLIST_FILE = "Garden Guardian/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Jake-Graham.Garden-Guardian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -753,6 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 95SDNK48A5;
 				INFOPLIST_FILE = "Garden Guardian/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Jake-Graham.Garden-Guardian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -824,6 +840,7 @@
 				D8BD70ED1E7F21E300D40E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8BD70EE1E7F21E300D40E83 /* Build configuration list for PBXNativeTarget "Garden GuardianTests" */ = {
 			isa = XCConfigurationList;
@@ -832,6 +849,7 @@
 				D8BD70F01E7F21E300D40E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8BD70F11E7F21E300D40E83 /* Build configuration list for PBXNativeTarget "Garden GuardianUITests" */ = {
 			isa = XCConfigurationList;
@@ -840,6 +858,7 @@
 				D8BD70F31E7F21E300D40E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

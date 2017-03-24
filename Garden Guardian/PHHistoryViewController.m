@@ -25,6 +25,9 @@
     CGFloat _maxX;
     UIView *_selectionView;
     UITextView *_zoomLabel;
+    UIImageView *_magGlass;
+    UIView *_magGlassRing;
+    CGFloat _selectedValue;
 }
 
 - (void)viewDidLoad {
@@ -87,14 +90,12 @@
 /* this function is used only for creating random points */
 - (NSArray *)randomSetOfObjects {
     NSMutableArray *array = [NSMutableArray array];
-    NSString *LabelFormat = @"%1.2f";
+    NSString *LabelFormat = @"%1.1f";
     NSMutableArray *XAr = [NSMutableArray array];
     NSMutableArray *YAr = [NSMutableArray array];
     for (int i = 0; i < 50; i++) {
         [XAr addObject:[NSString stringWithFormat:LabelFormat, _minX + i*(_maxX - _minX)/52 + 1]];
-        int mid = arc4random()%20;
-        CGFloat next = (float)mid/10.0f;
-        [YAr addObject:[NSString stringWithFormat:LabelFormat, 6.5f + next]];
+        [YAr addObject:[NSString stringWithFormat:LabelFormat, 6.0 + (float)(arc4random()%20)/10.0f]];
     }
     [array addObject:XAr];
     [array addObject:YAr];
@@ -131,8 +132,8 @@
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
-                            initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+                            initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitWeekday;
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:-1];
     
@@ -165,8 +166,8 @@
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
-                            initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit;
+                            initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitWeekday;
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setHour:-7*24];
     
@@ -198,8 +199,8 @@
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
-                            initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit;
+                            initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitWeekday;
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setHour:-30*24];
     
@@ -267,10 +268,11 @@
 }
 
 - (void)addGraph {
+    
     _scatterChart = [[PNScatterChart alloc] initWithFrame:CGRectMake(30, 135.0, SCREEN_WIDTH - 30, 200.0)];
     
     _scatterChart.delegate = self;
-
+    
     _scatterChart.showYGridLines = YES;
     _scatterChart.yLabelFormat = @"%1.1f";
     [_scatterChart setAxisYWithMinimumValue:0 andMaxValue:14 toTicks:5];
@@ -315,10 +317,10 @@
     [self.view addSubview:_scatterChart];
 }
 
-- (void)userClickOnValue:(CGPoint)value atPoint:(CGPoint)point {
+- (void)userClickOnValue:(CGPoint)value atPoint:(CGPoint)point touchPoint:(CGPoint)touchPoint {
     //disable pan to open while looking at points
     self.mm_drawerController.allowPanGesture = NO;
-    
+    _selectedValue = value.y;
     
     [_selectionView removeFromSuperview];
     _selectionView = nil;
@@ -331,13 +333,63 @@
     _selectionView.userInteractionEnabled = NO;
     _selectionView.layer.cornerRadius = radius;
     _selectionView.backgroundColor = [UIColor purpleColor];
-    _selectionView.alpha = 0.5;
+    _selectionView.alpha = 0.5f;
     [self.view addSubview:_selectionView];
     
     [_zoomLabel removeFromSuperview];
     _zoomLabel = nil;
+    
+    
+    [_magGlass removeFromSuperview];
+    _magGlass = nil;
+    
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(context, self.view.frame.size.width/2, self.view.frame.size.height/2 );
+    CGContextScaleCTM(context, 2.0f, 2.0f);
+    CGContextTranslateCTM(context,
+                          -(_scatterChart.frame.origin.x + touchPoint.x),
+                          -(_scatterChart.frame.origin.y + touchPoint.y));
+    [self.view.layer renderInContext:context];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGRect area = CGRectMake(viewImage.size.width/2 - 40, viewImage.size.height/2 - 40, 80, 80);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([viewImage CGImage], area);
+    UIImage *img = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    _magGlass = [[UIImageView alloc] initWithFrame:CGRectMake(_scatterChart.frame.origin.x + touchPoint.x - 40, _scatterChart.frame.origin.y + touchPoint.y - 120, 80, 80)];
+    _magGlass.clipsToBounds = YES;
+    _magGlass.layer.cornerRadius = _magGlass.frame.size.height / 2.0f;
+    _magGlass.layer.shadowOffset = CGSizeZero;
+    _magGlass.layer.shadowRadius = 6.0f;
+    _magGlass.layer.shadowOpacity = 0.75;
+    [_magGlass setImage:img];
+    
+    [_magGlassRing removeFromSuperview];
+    _magGlassRing = nil;
+    _magGlassRing = [[UIView alloc] initWithFrame:CGRectMake(_magGlass.frame.origin.x - 2,
+                                                             _magGlass.frame.origin.y - 2,
+                                                             _magGlass.frame.size.height + 4,
+                                                             _magGlass.frame.size.width + 4)];
+    _magGlassRing.clipsToBounds = YES;
+    _magGlassRing.layer.cornerRadius = _magGlassRing.frame.size.height / 2.0;
+    _magGlassRing.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:_magGlassRing];
+    [self.view addSubview:_magGlass];
+}
+
+- (void)userClickEnded {
+    self.mm_drawerController.allowPanGesture = YES;
+    
+    [_magGlass removeFromSuperview];
+    _magGlass = nil;
+    [_magGlassRing removeFromSuperview];
+    _magGlassRing = nil;
+    
     _zoomLabel = [[UITextView alloc] init];
-    _zoomLabel.text = [NSString stringWithFormat:@"%1.1f", value.y];
+    _zoomLabel.text = [NSString stringWithFormat:@"%1.1f", _selectedValue];
     _zoomLabel.font = [UIFont boldSystemFontOfSize:20];
     _zoomLabel.textColor = [UIColor whiteColor];
     _zoomLabel.textContainerInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
@@ -345,18 +397,13 @@
     _zoomLabel.backgroundColor = [UIColor purpleColor];
     _zoomLabel.layer.cornerRadius = 3.0f;
     _zoomLabel.clipsToBounds = YES;
-    frame = _zoomLabel.frame;
-    frame = CGRectMake(_scatterChart.frame.origin.x + point.x - frame.size.width/2,
-                       _scatterChart.frame.origin.y + point.y - 75,
+    CGRect frame = _zoomLabel.frame;
+    frame = CGRectMake(_selectionView.frame.origin.x - frame.size.width/2 + _selectionView.frame.size.width / 4,
+                       _selectionView.frame.origin.y - 75,
                        frame.size.width,
                        frame.size.height);
     _zoomLabel.frame = frame;
     [self.view addSubview:_zoomLabel];
 }
-
-- (void)userClickEnded {
-    self.mm_drawerController.allowPanGesture = YES;
-}
-
 
 @end

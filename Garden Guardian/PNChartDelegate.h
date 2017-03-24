@@ -27,7 +27,7 @@
  */
 - (void)userClickedOnBarAtIndex:(NSInteger)barIndex;
 
-- (void)userClickOnValue:(CGPoint)value atPoint:(CGPoint)point;
+- (void)userClickOnValue:(CGPoint)value atPoint:(CGPoint)point touchPoint:(CGPoint)touchPoint;
 
 - (void)userClickedOnPieIndexItem:(NSInteger)pieIndex;
 - (void)didUnselectPieItem;

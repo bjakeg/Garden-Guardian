@@ -854,11 +854,7 @@ andProgressLinePathsColors:(NSMutableArray *)progressLinePathsColors {
  *  in order to find whether there is an overlap between any of the rangeColors and the
  *  p1-p2 it uses NSIntersectionRange to intersect their yValues.
  *
- * @param p1
- * @param p2
- * @param rangeColors
- * @param defaultColor
- * @return
+ * 
  */
 - (NSArray *)colorRangesBetweenP1:(CGPoint)p1 P2:(CGPoint)p2
                       rangeColors:(NSArray<PNLineChartColorRange *> *)rangeColors
