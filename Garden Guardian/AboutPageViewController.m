@@ -15,6 +15,12 @@
     [self setTitle:@"About"];
     
     [self setupLeftMenuButton];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + 70, self.view.frame.size.width - 15, self.view.frame.size.height - 100)];
+    label.text = @"Garden Guardian is a project designed by Texas Tech students to promote water conservation in home gardens.";
+    label.numberOfLines = 0;
+    [label sizeToFit];
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {

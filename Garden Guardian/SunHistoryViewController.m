@@ -10,6 +10,8 @@
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
 #import "PNChart.h"
+#import "DBManager.h"
+#import "GGDataPoint.h"
 
 @interface SunHistoryViewController () <PNChartDelegate>
 
@@ -128,7 +130,7 @@
 
 - (void)setup24HourLabels {
     NSDate *currentDate = [NSDate date];
-    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSince1970];
+    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSinceReferenceDate];
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
@@ -137,7 +139,7 @@
     [components setDay:-1];
     
     NSDate *yesterday = [calendar dateByAddingComponents:components toDate:currentDate options:0];
-    NSTimeInterval yeserdayTimeInterval = [yesterday timeIntervalSince1970];
+    NSTimeInterval yeserdayTimeInterval = [yesterday timeIntervalSinceReferenceDate];
     NSLog(@"Yesterday TI:%f", yeserdayTimeInterval);
     
     _minX = yeserdayTimeInterval;
@@ -161,7 +163,7 @@
 
 - (void)setupWeekLabels {
     NSDate *currentDate = [NSDate date];
-    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSince1970];
+    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSinceReferenceDate];
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
@@ -171,7 +173,7 @@
     [components setHour:-7*24];
     
     NSDate *lastWeek = [calendar dateByAddingComponents:components toDate:currentDate options:0];
-    NSTimeInterval lastWeekTimeInterval = [lastWeek timeIntervalSince1970];
+    NSTimeInterval lastWeekTimeInterval = [lastWeek timeIntervalSinceReferenceDate];
     NSLog(@"Last Week TI:%f", lastWeekTimeInterval);
     
     _minX = lastWeekTimeInterval;
@@ -194,7 +196,7 @@
 
 - (void)setupMonthLabel {
     NSDate *currentDate = [NSDate date];
-    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSince1970];
+    NSTimeInterval currentTimeInterval = [currentDate timeIntervalSinceReferenceDate];
     NSLog(@"Current TI:%f", currentTimeInterval);
     
     NSCalendar *calendar = [[NSCalendar alloc]
@@ -204,7 +206,7 @@
     [components setHour:-30*24];
     
     NSDate *lastWeek = [calendar dateByAddingComponents:components toDate:currentDate options:0];
-    NSTimeInterval lastWeekTimeInterval = [lastWeek timeIntervalSince1970];
+    NSTimeInterval lastWeekTimeInterval = [lastWeek timeIntervalSinceReferenceDate];
     NSLog(@"Last Week TI:%f", lastWeekTimeInterval);
     
     _minX = lastWeekTimeInterval;
@@ -278,39 +280,43 @@
     
     [self setupXAxisLabels];
     
-    NSArray *data01Array = [self randomSetOfObjects];
+    NSArray *data01Array = [[DBManager getSharedInstance] findDataBetweenTime:_minX toTime:_maxX];//[self randomSetOfObjects];
     PNScatterChartData *data01 = [PNScatterChartData new];
     data01.strokeColor = PNYellow;
     data01.fillColor = PNYellow;
     data01.size = 3;
-    data01.itemCount = [data01Array[0] count];
+    data01.itemCount = [data01Array count];
     data01.inflexionPointStyle = PNScatterChartPointStyleCircle;
-    __block NSMutableArray *XAr1 = [NSMutableArray arrayWithArray:data01Array[0]];
-    __block NSMutableArray *YAr1 = [NSMutableArray arrayWithArray:data01Array[1]];
+//    __block NSMutableArray *XAr1 = [NSMutableArray arrayWithArray:data01Array[0]];
+//    __block NSMutableArray *YAr1 = [NSMutableArray arrayWithArray:data01Array[1]];
     
     data01.getData = ^(NSUInteger index) {
-        NSString *xString = [XAr1 objectAtIndex:index];
-        NSString *yString = [YAr1 objectAtIndex:index];
-        CGFloat xValue = [xString integerValue];
-        CGFloat yValue = [yString integerValue];
+//        NSString *xString = [XAr1 objectAtIndex:index];
+//        NSString *yString = [YAr1 objectAtIndex:index];
+//        CGFloat xValue = [xString integerValue];
+//        CGFloat yValue = [yString integerValue];
+//        return [PNScatterChartDataItem dataItemWithX:xValue AndWithY:yValue];
+        GGDataPoint *currentPoint = [data01Array objectAtIndex:index];
+        CGFloat xValue = (float)currentPoint.time;
+        CGFloat yValue = (float)currentPoint.sunVal;
         return [PNScatterChartDataItem dataItemWithX:xValue AndWithY:yValue];
+       
     };
     
     [_scatterChart setup];
     _scatterChart.chartData = @[data01];
-    
-    CGPoint previousPoint = CGPointMake([XAr1[0] floatValue], [YAr1[0] floatValue]);
-    
-    for (int i = 1; i < XAr1.count; i++) {
-        CGFloat xValue = [XAr1[i] floatValue];
-        CGFloat yValue = [YAr1[i] floatValue];
-        [_scatterChart drawCurvedLineFromPoint:previousPoint
-                                       ToPoint:CGPointMake(xValue, yValue)
-                                 WithLineWidth:2.0f
-                                  AndWithColor:PNBlack];
-        previousPoint = CGPointMake(xValue, yValue);
+    if (data01Array.count > 0) {
+        GGDataPoint *currentPoint = [data01Array objectAtIndex:0];
+        CGPoint previousPoint = CGPointMake((float)currentPoint.time, (float)currentPoint.sunVal);
+        
+        for (int i = 1; i < data01Array.count; i++) {
+            currentPoint = [data01Array objectAtIndex:i];
+            CGFloat xValue = (float)currentPoint.time;
+            CGFloat yValue = (float)currentPoint.sunVal;
+            [_scatterChart drawLineFromPoint:previousPoint ToPoint:CGPointMake(xValue, yValue) WithLineWith:2.0f AndWithColor:PNBlack];
+            previousPoint = CGPointMake(xValue, yValue);
+        }
     }
-    
     _scatterChart.delegate = self;
     
     [self.view addSubview:_scatterChart];

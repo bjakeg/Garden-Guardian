@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D822502D1EB12701008836E5 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D822502C1EB12701008836E5 /* DBManager.m */; };
+		D82250301EB12736008836E5 /* GGDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D822502F1EB12736008836E5 /* GGDataPoint.m */; };
+		D82250331EB13073008836E5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D82250321EB13073008836E5 /* libsqlite3.0.tbd */; };
+		D82250351EB13081008836E5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D82250341EB13081008836E5 /* libsqlite3.tbd */; };
 		D8AA8EF31E8301BA00279560 /* BTConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */; };
 		D8BD70C31E7F21E300D40E83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD70C21E7F21E300D40E83 /* main.m */; };
 		D8BD70C61E7F21E300D40E83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BD70C51E7F21E300D40E83 /* AppDelegate.m */; };
@@ -64,6 +68,37 @@
 		D8BD71831E7F24A600D40E83 /* tempTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BD71771E7F24A600D40E83 /* tempTabIcon.png */; };
 		D8BD71841E7F24A600D40E83 /* tempTabIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BD71781E7F24A600D40E83 /* tempTabIcon@2x.png */; };
 		D8BD71851E7F24A600D40E83 /* tempTabIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8BD71791E7F24A600D40E83 /* tempTabIcon@3x.png */; };
+		D8E1632C1E8D73B800C27435 /* GardenGuardianKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1632B1E8D73B800C27435 /* GardenGuardianKit.m */; };
+		D8E163301E8D74B500C27435 /* SunlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1632F1E8D74B500C27435 /* SunlightView.m */; };
+		D8E163331E8D7DC200C27435 /* MoistureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163321E8D7DC200C27435 /* MoistureView.m */; };
+		D8E163361E8D80F300C27435 /* TempView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163351E8D80F300C27435 /* TempView.m */; };
+		D8E163391E8D83AC00C27435 /* PHView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163381E8D83AC00C27435 /* PHView.m */; };
+		D8E1633D1E8D8AE100C27435 /* VeggieGuidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1633C1E8D8AE100C27435 /* VeggieGuidesViewController.m */; };
+		D8E163401E8DD20500C27435 /* FlowerGuidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1633F1E8DD20500C27435 /* FlowerGuidesViewController.m */; };
+		D8E163431E8DD4BC00C27435 /* FavoriteGuidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163421E8DD4BC00C27435 /* FavoriteGuidesViewController.m */; };
+		D8E163481E8DDF5500C27435 /* SquashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163471E8DDF5500C27435 /* SquashViewController.m */; };
+		D8E1634C1E8DDFE100C27435 /* Squash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E1634B1E8DDFE100C27435 /* Squash.jpg */; };
+		D8E1634E1E8E0CCC00C27435 /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E1634D1E8E0CCC00C27435 /* tomato.png */; };
+		D8E163511E8E0CEA00C27435 /* TomatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163501E8E0CEA00C27435 /* TomatoViewController.m */; };
+		D8E163541E8E0E0800C27435 /* ZucchiniViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163531E8E0E0800C27435 /* ZucchiniViewController.m */; };
+		D8E163561E8E0E6300C27435 /* Zucchini.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E163551E8E0E6300C27435 /* Zucchini.jpg */; };
+		D8E163591E8E0F0100C27435 /* CucumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163581E8E0F0100C27435 /* CucumberViewController.m */; };
+		D8E1635B1E8E0FDC00C27435 /* cucumber.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E1635A1E8E0FDC00C27435 /* cucumber.jpg */; };
+		D8E1635E1E8E112600C27435 /* TulipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1635D1E8E112600C27435 /* TulipViewController.m */; };
+		D8E163641E8E133D00C27435 /* tulip.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163631E8E133D00C27435 /* tulip.png */; };
+		D8E163671E8E13E500C27435 /* RoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163661E8E13E500C27435 /* RoseViewController.m */; };
+		D8E163691E8E14BD00C27435 /* Rose.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E163681E8E14BD00C27435 /* Rose.jpg */; };
+		D8E1636C1E8E155000C27435 /* DaisyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E1636B1E8E155000C27435 /* DaisyViewController.m */; };
+		D8E1636E1E8EA12C00C27435 /* Daisy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E1636D1E8EA12C00C27435 /* Daisy.jpg */; };
+		D8E163711E8EA23700C27435 /* CarnationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E163701E8EA23700C27435 /* CarnationViewController.m */; };
+		D8E163731E8EA30400C27435 /* carnation.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8E163721E8EA30400C27435 /* carnation.jpg */; };
+		D8E163771E8EA64600C27435 /* ic_favorite_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163741E8EA64600C27435 /* ic_favorite_2x.png */; };
+		D8E163781E8EA64600C27435 /* ic_favorite_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163751E8EA64600C27435 /* ic_favorite_3x.png */; };
+		D8E163791E8EA64600C27435 /* ic_favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163761E8EA64600C27435 /* ic_favorite.png */; };
+		D8E1637E1E8EBDF000C27435 /* cloud_ic.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E1637A1E8EBDF000C27435 /* cloud_ic.png */; };
+		D8E1637F1E8EBDF000C27435 /* cucumber_ic.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E1637B1E8EBDF000C27435 /* cucumber_ic.png */; };
+		D8E163831E8EBF3700C27435 /* flower_ic2.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163821E8EBF3700C27435 /* flower_ic2.png */; };
+		D8E163851E8EBFE400C27435 /* grapes_ic.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E163841E8EBFE400C27435 /* grapes_ic.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +119,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D82250271EB12653008836E5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.0.tbd; sourceTree = "<group>"; };
+		D82250281EB12653008836E5 /* libsqlite3.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.tbd; sourceTree = "<group>"; };
+		D822502B1EB12701008836E5 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		D822502C1EB12701008836E5 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		D822502E1EB12736008836E5 /* GGDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDataPoint.h; sourceTree = "<group>"; };
+		D822502F1EB12736008836E5 /* GGDataPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDataPoint.m; sourceTree = "<group>"; };
+		D82250321EB13073008836E5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		D82250341EB13081008836E5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D8AA8EF11E8301BA00279560 /* BTConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTConnectionHandler.h; sourceTree = "<group>"; };
 		D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTConnectionHandler.m; sourceTree = "<group>"; };
 		D8BD70BE1E7F21E300D40E83 /* Garden Guardian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Garden Guardian.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +231,53 @@
 		D8BD71771E7F24A600D40E83 /* tempTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tempTabIcon.png; sourceTree = "<group>"; };
 		D8BD71781E7F24A600D40E83 /* tempTabIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tempTabIcon@2x.png"; sourceTree = "<group>"; };
 		D8BD71791E7F24A600D40E83 /* tempTabIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tempTabIcon@3x.png"; sourceTree = "<group>"; };
+		D8E1632A1E8D73B800C27435 /* GardenGuardianKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenGuardianKit.h; sourceTree = "<group>"; };
+		D8E1632B1E8D73B800C27435 /* GardenGuardianKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GardenGuardianKit.m; sourceTree = "<group>"; };
+		D8E1632E1E8D74B500C27435 /* SunlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SunlightView.h; sourceTree = "<group>"; };
+		D8E1632F1E8D74B500C27435 /* SunlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SunlightView.m; sourceTree = "<group>"; };
+		D8E163311E8D7DC200C27435 /* MoistureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoistureView.h; sourceTree = "<group>"; };
+		D8E163321E8D7DC200C27435 /* MoistureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoistureView.m; sourceTree = "<group>"; };
+		D8E163341E8D80F300C27435 /* TempView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempView.h; sourceTree = "<group>"; };
+		D8E163351E8D80F300C27435 /* TempView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempView.m; sourceTree = "<group>"; };
+		D8E163371E8D83AC00C27435 /* PHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHView.h; sourceTree = "<group>"; };
+		D8E163381E8D83AC00C27435 /* PHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHView.m; sourceTree = "<group>"; };
+		D8E1633B1E8D8AE100C27435 /* VeggieGuidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeggieGuidesViewController.h; sourceTree = "<group>"; };
+		D8E1633C1E8D8AE100C27435 /* VeggieGuidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeggieGuidesViewController.m; sourceTree = "<group>"; };
+		D8E1633E1E8DD20500C27435 /* FlowerGuidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerGuidesViewController.h; sourceTree = "<group>"; };
+		D8E1633F1E8DD20500C27435 /* FlowerGuidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerGuidesViewController.m; sourceTree = "<group>"; };
+		D8E163411E8DD4BC00C27435 /* FavoriteGuidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteGuidesViewController.h; sourceTree = "<group>"; };
+		D8E163421E8DD4BC00C27435 /* FavoriteGuidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteGuidesViewController.m; sourceTree = "<group>"; };
+		D8E163461E8DDF5500C27435 /* SquashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquashViewController.h; sourceTree = "<group>"; };
+		D8E163471E8DDF5500C27435 /* SquashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquashViewController.m; sourceTree = "<group>"; };
+		D8E1634B1E8DDFE100C27435 /* Squash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Squash.jpg; sourceTree = "<group>"; };
+		D8E1634D1E8E0CCC00C27435 /* tomato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomato.png; sourceTree = "<group>"; };
+		D8E1634F1E8E0CEA00C27435 /* TomatoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoViewController.h; sourceTree = "<group>"; };
+		D8E163501E8E0CEA00C27435 /* TomatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoViewController.m; sourceTree = "<group>"; };
+		D8E163521E8E0E0800C27435 /* ZucchiniViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZucchiniViewController.h; sourceTree = "<group>"; };
+		D8E163531E8E0E0800C27435 /* ZucchiniViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZucchiniViewController.m; sourceTree = "<group>"; };
+		D8E163551E8E0E6300C27435 /* Zucchini.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Zucchini.jpg; sourceTree = "<group>"; };
+		D8E163571E8E0F0100C27435 /* CucumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CucumberViewController.h; sourceTree = "<group>"; };
+		D8E163581E8E0F0100C27435 /* CucumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CucumberViewController.m; sourceTree = "<group>"; };
+		D8E1635A1E8E0FDC00C27435 /* cucumber.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cucumber.jpg; sourceTree = "<group>"; };
+		D8E1635C1E8E112600C27435 /* TulipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TulipViewController.h; sourceTree = "<group>"; };
+		D8E1635D1E8E112600C27435 /* TulipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TulipViewController.m; sourceTree = "<group>"; };
+		D8E163631E8E133D00C27435 /* tulip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tulip.png; sourceTree = "<group>"; };
+		D8E163651E8E13E500C27435 /* RoseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoseViewController.h; sourceTree = "<group>"; };
+		D8E163661E8E13E500C27435 /* RoseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoseViewController.m; sourceTree = "<group>"; };
+		D8E163681E8E14BD00C27435 /* Rose.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rose.jpg; sourceTree = "<group>"; };
+		D8E1636A1E8E155000C27435 /* DaisyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaisyViewController.h; sourceTree = "<group>"; };
+		D8E1636B1E8E155000C27435 /* DaisyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaisyViewController.m; sourceTree = "<group>"; };
+		D8E1636D1E8EA12C00C27435 /* Daisy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Daisy.jpg; sourceTree = "<group>"; };
+		D8E1636F1E8EA23700C27435 /* CarnationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarnationViewController.h; sourceTree = "<group>"; };
+		D8E163701E8EA23700C27435 /* CarnationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarnationViewController.m; sourceTree = "<group>"; };
+		D8E163721E8EA30400C27435 /* carnation.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carnation.jpg; sourceTree = "<group>"; };
+		D8E163741E8EA64600C27435 /* ic_favorite_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_favorite_2x.png; sourceTree = "<group>"; };
+		D8E163751E8EA64600C27435 /* ic_favorite_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_favorite_3x.png; sourceTree = "<group>"; };
+		D8E163761E8EA64600C27435 /* ic_favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_favorite.png; sourceTree = "<group>"; };
+		D8E1637A1E8EBDF000C27435 /* cloud_ic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_ic.png; sourceTree = "<group>"; };
+		D8E1637B1E8EBDF000C27435 /* cucumber_ic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucumber_ic.png; sourceTree = "<group>"; };
+		D8E163821E8EBF3700C27435 /* flower_ic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower_ic2.png; sourceTree = "<group>"; };
+		D8E163841E8EBFE400C27435 /* grapes_ic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grapes_ic.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +285,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82250351EB13081008836E5 /* libsqlite3.tbd in Frameworks */,
+				D82250331EB13073008836E5 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,11 +307,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D82250311EB13073008836E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D82250341EB13081008836E5 /* libsqlite3.tbd */,
+				D82250321EB13073008836E5 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D8AA8EF01E83019A00279560 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D822502B1EB12701008836E5 /* DBManager.h */,
+				D822502C1EB12701008836E5 /* DBManager.m */,
 				D8AA8EF11E8301BA00279560 /* BTConnectionHandler.h */,
 				D8AA8EF21E8301BA00279560 /* BTConnectionHandler.m */,
+				D822502E1EB12736008836E5 /* GGDataPoint.h */,
+				D822502F1EB12736008836E5 /* GGDataPoint.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -227,10 +332,13 @@
 		D8BD70B51E7F21E300D40E83 = {
 			isa = PBXGroup;
 			children = (
+				D82250271EB12653008836E5 /* libsqlite3.0.tbd */,
+				D82250281EB12653008836E5 /* libsqlite3.tbd */,
 				D8BD70C01E7F21E300D40E83 /* Garden Guardian */,
 				D8BD70DA1E7F21E300D40E83 /* Garden GuardianTests */,
 				D8BD70E51E7F21E300D40E83 /* Garden GuardianUITests */,
 				D8BD70BF1E7F21E300D40E83 /* Products */,
+				D82250311EB13073008836E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,10 +355,10 @@
 		D8BD70C01E7F21E300D40E83 /* Garden Guardian */ = {
 			isa = PBXGroup;
 			children = (
-				D8AA8EF01E83019A00279560 /* Data */,
-				D8BD71691E7F246500D40E83 /* Supporting Files */,
 				D8BD715E1E7F23ED00D40E83 /* Third Party */,
 				D8BD711D1E7F236D00D40E83 /* ViewControllers */,
+				D8AA8EF01E83019A00279560 /* Data */,
+				D8BD71691E7F246500D40E83 /* Supporting Files */,
 				D8BD70C41E7F21E300D40E83 /* AppDelegate.h */,
 				D8BD70C51E7F21E300D40E83 /* AppDelegate.m */,
 				D8BD70CD1E7F21E300D40E83 /* Assets.xcassets */,
@@ -308,15 +416,11 @@
 		D8BD711D1E7F236D00D40E83 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D8E1633A1E8D889300C27435 /* Guides */,
+				D8E1632D1E8D745400C27435 /* Home */,
 				D8BD711E1E7F237D00D40E83 /* History */,
-				D8BD71021E7F22B900D40E83 /* CenterViewController.h */,
-				D8BD71031E7F22B900D40E83 /* CenterViewController.m */,
 				D8BD71051E7F22D300D40E83 /* LeftViewController.h */,
 				D8BD71061E7F22D300D40E83 /* LeftViewController.m */,
-				D8BD710B1E7F230900D40E83 /* HistoryViewController.h */,
-				D8BD710C1E7F230900D40E83 /* HistoryViewController.m */,
-				D8BD710E1E7F231A00D40E83 /* GuidesViewController.h */,
-				D8BD710F1E7F231A00D40E83 /* GuidesViewController.m */,
 				D8BD71111E7F232800D40E83 /* AboutPageViewController.h */,
 				D8BD71121E7F232800D40E83 /* AboutPageViewController.m */,
 				D8BD71141E7F233B00D40E83 /* DeviceViewController.h */,
@@ -332,6 +436,8 @@
 		D8BD711E1E7F237D00D40E83 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				D8BD710B1E7F230900D40E83 /* HistoryViewController.h */,
+				D8BD710C1E7F230900D40E83 /* HistoryViewController.m */,
 				D8BD711F1E7F238800D40E83 /* SunHistoryViewController.h */,
 				D8BD71201E7F238800D40E83 /* SunHistoryViewController.m */,
 				D8BD71251E7F23A300D40E83 /* WaterHistoryViewController.h */,
@@ -413,6 +519,84 @@
 		D8BD71691E7F246500D40E83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D8E1632A1E8D73B800C27435 /* GardenGuardianKit.h */,
+				D8E1632B1E8D73B800C27435 /* GardenGuardianKit.m */,
+				D8E1634A1E8DDFD200C27435 /* Images */,
+				D8E163491E8DDFC600C27435 /* Icons */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8E1632D1E8D745400C27435 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D8BD71021E7F22B900D40E83 /* CenterViewController.h */,
+				D8BD71031E7F22B900D40E83 /* CenterViewController.m */,
+				D8E1632E1E8D74B500C27435 /* SunlightView.h */,
+				D8E1632F1E8D74B500C27435 /* SunlightView.m */,
+				D8E163311E8D7DC200C27435 /* MoistureView.h */,
+				D8E163321E8D7DC200C27435 /* MoistureView.m */,
+				D8E163341E8D80F300C27435 /* TempView.h */,
+				D8E163351E8D80F300C27435 /* TempView.m */,
+				D8E163371E8D83AC00C27435 /* PHView.h */,
+				D8E163381E8D83AC00C27435 /* PHView.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		D8E1633A1E8D889300C27435 /* Guides */ = {
+			isa = PBXGroup;
+			children = (
+				D8E163451E8DDAD300C27435 /* Flower Guides */,
+				D8E163441E8DDAA500C27435 /* Veggie Guides */,
+				D8BD710E1E7F231A00D40E83 /* GuidesViewController.h */,
+				D8BD710F1E7F231A00D40E83 /* GuidesViewController.m */,
+				D8E1633B1E8D8AE100C27435 /* VeggieGuidesViewController.h */,
+				D8E1633C1E8D8AE100C27435 /* VeggieGuidesViewController.m */,
+				D8E1633E1E8DD20500C27435 /* FlowerGuidesViewController.h */,
+				D8E1633F1E8DD20500C27435 /* FlowerGuidesViewController.m */,
+				D8E163411E8DD4BC00C27435 /* FavoriteGuidesViewController.h */,
+				D8E163421E8DD4BC00C27435 /* FavoriteGuidesViewController.m */,
+			);
+			name = Guides;
+			sourceTree = "<group>";
+		};
+		D8E163441E8DDAA500C27435 /* Veggie Guides */ = {
+			isa = PBXGroup;
+			children = (
+				D8E163461E8DDF5500C27435 /* SquashViewController.h */,
+				D8E163471E8DDF5500C27435 /* SquashViewController.m */,
+				D8E1634F1E8E0CEA00C27435 /* TomatoViewController.h */,
+				D8E163501E8E0CEA00C27435 /* TomatoViewController.m */,
+				D8E163521E8E0E0800C27435 /* ZucchiniViewController.h */,
+				D8E163531E8E0E0800C27435 /* ZucchiniViewController.m */,
+				D8E163571E8E0F0100C27435 /* CucumberViewController.h */,
+				D8E163581E8E0F0100C27435 /* CucumberViewController.m */,
+			);
+			name = "Veggie Guides";
+			sourceTree = "<group>";
+		};
+		D8E163451E8DDAD300C27435 /* Flower Guides */ = {
+			isa = PBXGroup;
+			children = (
+				D8E1635C1E8E112600C27435 /* TulipViewController.h */,
+				D8E1635D1E8E112600C27435 /* TulipViewController.m */,
+				D8E163651E8E13E500C27435 /* RoseViewController.h */,
+				D8E163661E8E13E500C27435 /* RoseViewController.m */,
+				D8E1636A1E8E155000C27435 /* DaisyViewController.h */,
+				D8E1636B1E8E155000C27435 /* DaisyViewController.m */,
+				D8E1636F1E8EA23700C27435 /* CarnationViewController.h */,
+				D8E163701E8EA23700C27435 /* CarnationViewController.m */,
+			);
+			name = "Flower Guides";
+			sourceTree = "<group>";
+		};
+		D8E163491E8DDFC600C27435 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D8E163741E8EA64600C27435 /* ic_favorite_2x.png */,
+				D8E163751E8EA64600C27435 /* ic_favorite_3x.png */,
+				D8E163761E8EA64600C27435 /* ic_favorite.png */,
 				D8BD716E1E7F24A600D40E83 /* moistureTabIcon.png */,
 				D8BD716F1E7F24A600D40E83 /* moistureTabIcon@2x.png */,
 				D8BD71701E7F24A600D40E83 /* moistureTabIcon@3x.png */,
@@ -426,7 +610,26 @@
 				D8BD71781E7F24A600D40E83 /* tempTabIcon@2x.png */,
 				D8BD71791E7F24A600D40E83 /* tempTabIcon@3x.png */,
 			);
-			name = "Supporting Files";
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		D8E1634A1E8DDFD200C27435 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D8E163841E8EBFE400C27435 /* grapes_ic.png */,
+				D8E163821E8EBF3700C27435 /* flower_ic2.png */,
+				D8E1637A1E8EBDF000C27435 /* cloud_ic.png */,
+				D8E1637B1E8EBDF000C27435 /* cucumber_ic.png */,
+				D8E163721E8EA30400C27435 /* carnation.jpg */,
+				D8E1636D1E8EA12C00C27435 /* Daisy.jpg */,
+				D8E163681E8E14BD00C27435 /* Rose.jpg */,
+				D8E163631E8E133D00C27435 /* tulip.png */,
+				D8E1635A1E8E0FDC00C27435 /* cucumber.jpg */,
+				D8E163551E8E0E6300C27435 /* Zucchini.jpg */,
+				D8E1634D1E8E0CCC00C27435 /* tomato.png */,
+				D8E1634B1E8DDFE100C27435 /* Squash.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,20 +740,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8BD717D1E7F24A600D40E83 /* pHTabIcon.png in Resources */,
+				D8E163851E8EBFE400C27435 /* grapes_ic.png in Resources */,
 				D8BD717E1E7F24A600D40E83 /* pHTabIcon@2x.png in Resources */,
+				D8E163791E8EA64600C27435 /* ic_favorite.png in Resources */,
 				D8BD70D11E7F21E300D40E83 /* LaunchScreen.storyboard in Resources */,
+				D8E1634E1E8E0CCC00C27435 /* tomato.png in Resources */,
+				D8E1637F1E8EBDF000C27435 /* cucumber_ic.png in Resources */,
+				D8E163731E8EA30400C27435 /* carnation.jpg in Resources */,
 				D8BD71801E7F24A600D40E83 /* sunTabIcon.png in Resources */,
 				D8BD71831E7F24A600D40E83 /* tempTabIcon.png in Resources */,
 				D8BD71811E7F24A600D40E83 /* sunTabIcon@2x.png in Resources */,
+				D8E1637E1E8EBDF000C27435 /* cloud_ic.png in Resources */,
 				D8BD71851E7F24A600D40E83 /* tempTabIcon@3x.png in Resources */,
+				D8E163831E8EBF3700C27435 /* flower_ic2.png in Resources */,
 				D8BD717A1E7F24A600D40E83 /* moistureTabIcon.png in Resources */,
+				D8E1635B1E8E0FDC00C27435 /* cucumber.jpg in Resources */,
 				D8BD716C1E7F248400D40E83 /* kb-loupe-hi_6.png in Resources */,
 				D8BD71841E7F24A600D40E83 /* tempTabIcon@2x.png in Resources */,
+				D8E163561E8E0E6300C27435 /* Zucchini.jpg in Resources */,
+				D8E163641E8E133D00C27435 /* tulip.png in Resources */,
 				D8BD717B1E7F24A600D40E83 /* moistureTabIcon@2x.png in Resources */,
 				D8BD70CE1E7F21E300D40E83 /* Assets.xcassets in Resources */,
+				D8E163691E8E14BD00C27435 /* Rose.jpg in Resources */,
+				D8E1634C1E8DDFE100C27435 /* Squash.jpg in Resources */,
 				D8BD716D1E7F248400D40E83 /* kb-loupe-hi_7.png in Resources */,
 				D8BD71821E7F24A600D40E83 /* sunTabIcon@3x.png in Resources */,
+				D8E1636E1E8EA12C00C27435 /* Daisy.jpg in Resources */,
 				D8BD717F1E7F24A600D40E83 /* pHTabIcon@3x.png in Resources */,
+				D8E163771E8EA64600C27435 /* ic_favorite_2x.png in Resources */,
+				D8E163781E8EA64600C27435 /* ic_favorite_3x.png in Resources */,
 				D8BD717C1E7F24A600D40E83 /* moistureTabIcon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,21 +794,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82250301EB12736008836E5 /* GGDataPoint.m in Sources */,
 				D8BD71131E7F232800D40E83 /* AboutPageViewController.m in Sources */,
 				D8BD71521E7F23D700D40E83 /* PNColor.m in Sources */,
 				D8BD715B1E7F23D700D40E83 /* PNScatterChart.m in Sources */,
 				D8BD71591E7F23D700D40E83 /* PNRadarChart.m in Sources */,
+				D8E163331E8D7DC200C27435 /* MoistureView.m in Sources */,
+				D8E163431E8DD4BC00C27435 /* FavoriteGuidesViewController.m in Sources */,
 				D8BD71671E7F240D00D40E83 /* ACMagnifyingGlass.m in Sources */,
+				D822502D1EB12701008836E5 /* DBManager.m in Sources */,
 				D8AA8EF31E8301BA00279560 /* BTConnectionHandler.m in Sources */,
+				D8E163671E8E13E500C27435 /* RoseViewController.m in Sources */,
 				D8BD714F1E7F23D700D40E83 /* PNBarChart.m in Sources */,
 				D8BD71071E7F22D300D40E83 /* LeftViewController.m in Sources */,
 				D8BD712A1E7F23B300D40E83 /* PHHistoryViewController.m in Sources */,
+				D8E163511E8E0CEA00C27435 /* TomatoViewController.m in Sources */,
+				D8E163391E8D83AC00C27435 /* PHView.m in Sources */,
 				D8BD71101E7F231A00D40E83 /* GuidesViewController.m in Sources */,
 				D8BD710A1E7F22EA00D40E83 /* MMNavigationController.m in Sources */,
 				D8BD714E1E7F23D700D40E83 /* PNBar.m in Sources */,
 				D8BD71001E7F228200D40E83 /* MMDrawerVisualState.m in Sources */,
 				D8BD71191E7F235500D40E83 /* PurchasesViewController.m in Sources */,
 				D8BD71041E7F22B900D40E83 /* CenterViewController.m in Sources */,
+				D8E163541E8E0E0800C27435 /* ZucchiniViewController.m in Sources */,
 				D8BD71531E7F23D700D40E83 /* PNGenericChart.m in Sources */,
 				D8BD71571E7F23D700D40E83 /* PNPieChart.m in Sources */,
 				D8BD710D1E7F230900D40E83 /* HistoryViewController.m in Sources */,
@@ -598,20 +824,30 @@
 				D8BD70FF1E7F228200D40E83 /* MMDrawerController.m in Sources */,
 				D8BD70FE1E7F228200D40E83 /* MMDrawerBarButtonItem.m in Sources */,
 				D8BD71541E7F23D700D40E83 /* PNLineChart.m in Sources */,
+				D8E163361E8D80F300C27435 /* TempView.m in Sources */,
+				D8E163711E8EA23700C27435 /* CarnationViewController.m in Sources */,
 				D8BD71581E7F23D700D40E83 /* PNPieChartDataItem.m in Sources */,
 				D8BD715A1E7F23D700D40E83 /* PNRadarChartDataItem.m in Sources */,
 				D8BD715D1E7F23D700D40E83 /* PNScatterChartDataItem.m in Sources */,
 				D8BD71561E7F23D700D40E83 /* PNLineChartDataItem.m in Sources */,
 				D8BD71511E7F23D700D40E83 /* PNCircleChart.m in Sources */,
+				D8E1635E1E8E112600C27435 /* TulipViewController.m in Sources */,
+				D8E1632C1E8D73B800C27435 /* GardenGuardianKit.m in Sources */,
 				D8BD71661E7F240D00D40E83 /* ACLoupe.m in Sources */,
 				D8BD71271E7F23A300D40E83 /* WaterHistoryViewController.m in Sources */,
 				D8BD715C1E7F23D700D40E83 /* PNScatterChartData.m in Sources */,
 				D8BD71681E7F240D00D40E83 /* ACMagnifyingView.m in Sources */,
 				D8BD70C61E7F21E300D40E83 /* AppDelegate.m in Sources */,
+				D8E163481E8DDF5500C27435 /* SquashViewController.m in Sources */,
+				D8E163591E8E0F0100C27435 /* CucumberViewController.m in Sources */,
 				D8BD71211E7F238800D40E83 /* SunHistoryViewController.m in Sources */,
+				D8E1633D1E8D8AE100C27435 /* VeggieGuidesViewController.m in Sources */,
+				D8E1636C1E8E155000C27435 /* DaisyViewController.m in Sources */,
+				D8E163301E8D74B500C27435 /* SunlightView.m in Sources */,
 				D8BD71551E7F23D700D40E83 /* PNLineChartData.m in Sources */,
 				D8BD711C1E7F235F00D40E83 /* SettingsViewController.m in Sources */,
 				D8BD71241E7F239B00D40E83 /* TempHistoryViewController.m in Sources */,
+				D8E163401E8DD20500C27435 /* FlowerGuidesViewController.m in Sources */,
 				D8BD71161E7F233C00D40E83 /* DeviceViewController.m in Sources */,
 				D8BD70C31E7F21E300D40E83 /* main.m in Sources */,
 				D8BD71501E7F23D700D40E83 /* PNChartLabel.m in Sources */,
@@ -757,6 +993,10 @@
 				INFOPLIST_FILE = "Garden Guardian/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Jake-Graham.Garden-Guardian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -770,6 +1010,10 @@
 				INFOPLIST_FILE = "Garden Guardian/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Jake-Graham.Garden-Guardian";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSInteger, GuideItem){
+    GuideItemFavorites,
+    GuideItemVeggies,
+    GuideItemFlowers,
+    VeggieItemSquash,
+    VeggieItemZuchini,
+    VeggieItemTomato,
+    VeggieItemCucumber,
+    FlowerItemTulip,
+    FlowerItemDaisy,
+    FlowerItemRose,
+    FlowerItemCarnation,
+};
+
 @interface GuidesViewController : UIViewController
 
 @end

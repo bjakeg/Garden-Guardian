@@ -61,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,9 +82,9 @@
         case MenuItemPurchases:
             cell.textLabel.text = @"Purchases";
             break;
-        case MenuItemDevice:
-            cell.textLabel.text = @"Device";
-            break;
+//        case MenuItemDevice:
+//            cell.textLabel.text = @"Device";
+//            break;
         case MenuItemSettings:
             cell.textLabel.text = @"Settings";
             break;
@@ -139,14 +139,14 @@
                                                    completion:nil];
             break;
         }
-        case MenuItemDevice: {
-            DeviceViewController *devicePage = [[DeviceViewController alloc] init];
-            UINavigationController *nav = [[MMNavigationController alloc] initWithRootViewController:devicePage];
-            [self.mm_drawerController setCenterViewController:nav
-                                           withCloseAnimation:YES
-                                                   completion:nil];
-            break;
-        }
+//        case MenuItemDevice: {
+//            DeviceViewController *devicePage = [[DeviceViewController alloc] init];
+//            UINavigationController *nav = [[MMNavigationController alloc] initWithRootViewController:devicePage];
+//            [self.mm_drawerController setCenterViewController:nav
+//                                           withCloseAnimation:YES
+//                                                   completion:nil];
+//            break;
+//        }
         case MenuItemSettings: {
             SettingsViewController *settingsPage = [[SettingsViewController alloc] init];
             UINavigationController *nav = [[MMNavigationController alloc] initWithRootViewController:settingsPage];

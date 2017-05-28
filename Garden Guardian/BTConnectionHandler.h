@@ -8,12 +8,14 @@
 
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <Foundation/Foundation.h>
-
+#import "GGDataPoint.h"
 #define POLARH7_HRM_DEVICE_INFO_SERVICE_UUID @"180A"
 
 @protocol BTConnectionHandlerDelegate;
 
 @interface BTConnectionHandler : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+
++ (BTConnectionHandler *)getSharedInstance;
 
 @property (nonatomic, strong) CBCentralManager *centralManager;
 @property (nonatomic, strong) CBPeripheral     *peripheral;
@@ -24,5 +26,6 @@
 @protocol BTConnectionHandlerDelegate <NSObject>
 
 @required
-- (void)newData;
+- (void)newDataPoint:(GGDataPoint *)dataPoint;
+- (void)newNotfiyPoint:(GGDataPoint *)dataPoint;
 @end

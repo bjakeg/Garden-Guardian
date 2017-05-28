@@ -7,9 +7,22 @@
 //
 
 #import "BTConnectionHandler.h"
+#import "GGDataPoint.h"
+#import "DBManager.h"
+
+static BTConnectionHandler *sharedInstance = nil;
 
 @implementation BTConnectionHandler {
     NSMutableArray *_peripheralArray;
+    CBCharacteristic *_2A1C;
+    CBCharacteristic *_2A21;
+}
+
++(BTConnectionHandler*)getSharedInstance{
+    if (!sharedInstance) {
+        sharedInstance = [[super allocWithZone:NULL]init];
+    }
+    return sharedInstance;
 }
 
 - (id)init {
@@ -42,7 +55,10 @@
             [_peripheralArray addObject:peripheral];
         }
     }
-    if ([localName isEqualToString:@"SensorTag"]) {
+    NSLog(@"Name %@", peripheral.name);
+    NSLog(@"LocalName %@", localName);
+    NSLog(@"UUID %@", peripheral.identifier.UUIDString);
+    if ([peripheral.name isEqualToString:@"Garden Guardian"]) {
         [self.centralManager stopScan];
         self.peripheral = peripheral;
         peripheral.delegate = self;
@@ -88,27 +104,25 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)            service error:(NSError *)error {
     for (CBCharacteristic *aChar in service.characteristics)
     {
-        NSLog(@"Characterisitc: %@", aChar.UUID);
+        NSLog(@"New Characterisitc: %@", aChar.UUID);
         
-        [self.peripheral setNotifyValue:YES forCharacteristic:aChar];
-        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F0001121-0451-4000-B000-000000000000"]]) {
+        //[self.peripheral setNotifyValue:YES forCharacteristic:aChar];
+        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A1C"]]) {
+//            _2A1C = aChar;
+//            [peripheral readValueForCharacteristic:aChar];
+//            [self.peripheral setNotifyValue:YES forCharacteristic:aChar];
+        }
+        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A1E"]]) {
             [peripheral setNotifyValue:YES forCharacteristic:aChar];
         }
-        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F0001122-0451-4000-B000-000000000000"]]) {
-            [peripheral setNotifyValue:YES forCharacteristic:aChar];
-        }
-        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F0001131-0451-4000-B000-000000000000"]]) {
-            [peripheral setNotifyValue:YES forCharacteristic:aChar];
-            //[peripheral readValueForCharacteristic:aChar];
-            
-            //NSLog(@"String Value: %@", aChar);
-            
-        }
-        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"F0001132-0451-4000-B000-000000000000"]]) {
-            [peripheral setNotifyValue:YES forCharacteristic:aChar];
-            //[peripheral readValueForCharacteristic:aChar];
-            
-            NSLog(@"String Value: %@", aChar);
+        if ([aChar.UUID isEqual:[CBUUID UUIDWithString:@"2A21"]]) {
+//            _2A21 = aChar;
+//            [peripheral setNotifyValue:YES forCharacteristic:aChar];
+//            NSLog(@"String Value: %@", aChar);
+//            [peripheral readValueForCharacteristic:aChar];
+//            char arr[] = {0x22, 0x21};
+//            NSData *val = [NSData dataWithBytes:arr length:2];
+//            //[peripheral writeValue:val forCharacteristic:aChar type:CBCharacteristicWriteWithResponse];
             
         }
     }
@@ -117,29 +131,37 @@
 // Invoked when you retrieve a specified characteristic's value, or when the peripheral device notifies your app that the characteristic's value has changed.
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F0001131-0451-4000-B000-000000000000"]]) {
-        //NSLog(@"String Value: %@", characteristic.value);
-        NSString *string = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-        NSLog(@"Decoded string: %@", string);
-        //[self.delegate heartRateUpdated:(int)[string integerValue]];
-        //[self.peripheral readValueForCharacteristic:characteristic];
-        for (int i = 0; i < 10000000; i++);
+    //NSLog(@"%@", characteristic.UUID);
+    // Notify
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1E"]]) {
+        NSLog(@"2A1E Value: %@", characteristic.value);
         
+        CGFloat difference;
+        NSArray *points = [[DBManager getSharedInstance] findLast50Data];
+        if (points.count > 0) {
+            GGDataPoint *lastPoint = [points objectAtIndex:0];
+            NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+            difference = currentTime - lastPoint.time;
+        } else {
+            difference = 2000000;
+        }
+        GGDataPoint *point = [self parseNotifyResponse:characteristic.value];
+        [self.delegate newNotfiyPoint:point];
+
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:point forKey:@"message"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:nil userInfo:dict];
+        
+        if (difference > 30*60) {
+            [[DBManager getSharedInstance] saveDataPoint:point];
+        }
     }
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F0001132-0451-4000-B000-000000000000"]]) {
-        //NSLog(@"String Value: %@", characteristic.value);
-        NSString *string = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-        NSLog(@"Decoded string: %@", string);
-        //[self.delegate heartRateUpdated:(int)[string integerValue]];
-        // [self.peripheral readValueForCharacteristic:characteristic];
-        
+    // Intermediate
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1C"]]) {
+        //NSLog(@"2A1C Value: %@", characteristic.value);
+//        GGDataPoint *point = [self parseIntermediateResponse:characteristic.value];
     }
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"F0001121-0451-4000-B000-000000000000"]]) {
-        
-        NSLog(@"Left updated to :%@", characteristic.value);
-        const uint8_t *bytes = [characteristic.value bytes]; // pointer to the bytes in data
-        int value = bytes[0];
-        // TODO: Store reading here
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A21"]]) {
+        //NSLog(@"2A21 Value: %@", characteristic.value);
     }
 }
 
@@ -149,8 +171,85 @@
 }
 
 - (void) peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error {
-    
+    NSLog(@"Descriptor: %@  Error: %@", descriptor, error);
 }
 
+
+- (GGDataPoint *)parseNotifyResponse:(NSData *)value {
+    GGDataPoint *newPoint = [[GGDataPoint alloc] init];
+    newPoint.time = [NSDate timeIntervalSinceReferenceDate]; // No time for notify value
+    
+    uint8_t tempVal;
+    [value getBytes:&tempVal range:NSMakeRange(1, 1)];
+    tempVal = (1.8f * tempVal) + 32;
+    if (tempVal > 150) {
+        tempVal = 150;
+    }
+    newPoint.tempVal = tempVal;
+    
+    uint8_t moistureVal;
+    [value getBytes:&moistureVal range:NSMakeRange(2, 1)];
+    moistureVal = ((float)moistureVal/140.f)*100;
+    if (moistureVal > 100) {
+        moistureVal = 100;
+    }
+    newPoint.moistureVal = moistureVal;
+    
+    uint8_t pHVal;
+    [value getBytes:&pHVal range:NSMakeRange(3, 1)];
+    CGFloat pHValF;
+    pHValF = 10.49078 - .07135255*pHVal + .0001773836*pHVal*pHVal;
+    newPoint.pHVal = pHValF;
+    
+    uint8_t sunVal;
+    [value getBytes:&sunVal range:NSMakeRange(4, 1)];
+    double temp = pow(10, .005 * sunVal);
+    double max = pow(10, .005 * 250);
+    sunVal = (temp/max) * 100;
+    newPoint.sunVal = sunVal;
+
+    return newPoint;
+}
+
+- (GGDataPoint *)parseIntermediateResponse:(NSData *)value {
+    if (value == nil) {
+        return nil;
+    }
+    GGDataPoint *newPoint = [[GGDataPoint alloc] init];
+    newPoint.time = [NSDate timeIntervalSinceReferenceDate]; // No time for notify value
+    
+    uint8_t tempVal;
+    [value getBytes:&tempVal range:NSMakeRange(1, 1)];
+    tempVal = (1.8f * tempVal) + 32;
+    if (tempVal > 150) {
+        tempVal = 150;
+    }
+    newPoint.tempVal = tempVal;
+    
+    uint8_t moistureVal;
+    [value getBytes:&moistureVal range:NSMakeRange(2, 1)];
+    moistureVal = ((float)moistureVal/100.f)*100;
+    newPoint.moistureVal = moistureVal;
+    
+    uint8_t pHVal;
+    [value getBytes:&pHVal range:NSMakeRange(3, 1)];
+    pHVal = 10.49078 - .07135255*pHVal + .0001773836*pHVal*pHVal;
+    newPoint.pHVal = pHVal;
+    
+    uint8_t sunVal;
+    [value getBytes:&sunVal range:NSMakeRange(4, 1)];
+    double temp = pow(10, .005 * sunVal);
+    double max = pow(10, .005 * 250);
+    sunVal = (temp/max) * 100;
+    newPoint.sunVal = sunVal;
+    
+    //int time;
+    //[value getBytes:&time range:NSMakeRange(5, 4)];
+    NSData *timeBytes = [value subdataWithRange:NSMakeRange(5, 4)];
+    int time = CFSwapInt32BigToHost(*(int*)([timeBytes bytes]));
+    newPoint.time = time;
+    
+    return newPoint;
+}
 
 @end

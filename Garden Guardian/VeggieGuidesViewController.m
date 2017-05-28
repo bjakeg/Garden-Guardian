@@ -1,15 +1,23 @@
-#import "GuidesViewController.h"
-#import "MMDrawerBarButtonItem.h"
-#import "UIViewController+MMDrawerController.h"
-#import "VeggieGuidesViewController.h"
-#import "FlowerGuidesViewController.h"
-#import "FavoriteGuidesViewController.h"
+//
+//  VeggieGuidesViewController.m
+//  Garden Guardian
+//
+//  Created by Jake Graham on 3/30/17.
+//  Copyright © 2017 Jake Graham. All rights reserved.
+//
 
-@interface GuidesViewController () <UITableViewDataSource,UITableViewDelegate>
+#import "VeggieGuidesViewController.h"
+#import "GuidesViewController.h"
+#import "SquashViewController.h"
+#import "TomatoViewController.h"
+#import "ZucchiniViewController.h"
+#import "CucumberViewController.h"
+
+@interface VeggieGuidesViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation GuidesViewController {
+@implementation VeggieGuidesViewController {
     UITableView *_tableView;
 }
 
@@ -17,9 +25,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setTitle:@"Guides"];
-    
-    [self setupLeftMenuButton];
+    [self setTitle:@"Vegetables"];
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -40,17 +46,6 @@
     _tableView.separatorStyle = UITableViewCellEditingStyleNone;
 }
 
-#pragma mark - Navigation
-
--(void)setupLeftMenuButton{
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-}
-
--(void)leftDrawerButtonPress:(id)sender{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -60,26 +55,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
     
-    switch (indexPath.row) {
-        case GuideItemFavorites:
-            cell.textLabel.text = @"Favorites";
+    switch (indexPath.row + 3) {
+        case VeggieItemSquash:
+            cell.textLabel.text = @"Squash";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
-        case GuideItemVeggies:
-            cell.textLabel.text = @"Vegetables";
+        case VeggieItemTomato:
+            cell.textLabel.text = @"Tomato";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
-        case GuideItemFlowers:
-            cell.textLabel.text = @"Flowers";
+        case VeggieItemZuchini:
+            cell.textLabel.text = @"Zucchini";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
+        case VeggieItemCucumber:
+            cell.textLabel.text = @"Cucumber";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         default:
             break;
     }
@@ -94,19 +92,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) {
-        case GuideItemFavorites: {
-            FavoriteGuidesViewController *vc = [[FavoriteGuidesViewController alloc] init];
+    switch (indexPath.row + 3) {
+        case VeggieItemSquash: {
+            SquashViewController *vc = [[SquashViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case GuideItemVeggies: {
-            VeggieGuidesViewController *vc = [[VeggieGuidesViewController alloc] init];
+        case VeggieItemTomato: {
+            TomatoViewController *vc = [[TomatoViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case GuideItemFlowers: {
-            FlowerGuidesViewController *vc = [[FlowerGuidesViewController alloc] init];
+        case VeggieItemZuchini: {
+            ZucchiniViewController *vc = [[ZucchiniViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case VeggieItemCucumber: {
+            CucumberViewController *vc = [[CucumberViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
@@ -114,7 +117,11 @@
             break;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
+
+
+
 
 
 @end

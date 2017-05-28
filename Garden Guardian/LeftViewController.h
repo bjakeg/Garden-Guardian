@@ -5,7 +5,6 @@ typedef NS_ENUM(NSInteger, MenuItem){
     MenuItemHistory,
     MenuItemGuides,
     MenuItemPurchases,
-    MenuItemDevice,
     MenuItemSettings,
     MenuItemAbout,
 };
